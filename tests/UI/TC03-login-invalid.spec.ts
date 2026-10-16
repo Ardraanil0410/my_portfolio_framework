@@ -10,6 +10,6 @@ test ("TC03 - Login User with incorrect email and password",async({page})=>{
     await loginPage.loginDetails("tester@test.com","Tester@123")
     await expect (loginPage.errorMessage).toBeVisible()
 
-
+    
 
 })
