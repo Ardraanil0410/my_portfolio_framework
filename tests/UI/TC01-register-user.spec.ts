@@ -2,6 +2,7 @@ import { LoginPage } from "../../pages/LoginPage";
 import { HomePage } from "../../pages/HomePage";
 import { SignupDetailsPage } from "../../pages/SignupDetailsPage";
 import {test,expect} from "@playwright/test"
+import users from "../../test-data/users.json"
 
 test ("Test Case 1: Register User",async({page})=>{
     await page.goto("/")
@@ -12,10 +13,11 @@ test ("Test Case 1: Register User",async({page})=>{
     await homePage.clickSignupLogin()
 
 //Enter details for the signup Form
-   await loginPage.signup("TestUser112","tester112@test.com")
+    await loginPage.signup(users.validUser.name,users.validUser.email)
+   //await loginPage.signup("TestUser112","tester112@test.com")
 
 //Enter details on the Sign up page
- await signupPage.signup()
+ await signupPage.signup(users.newUserForSignup)
 
 //Verification of successful account creation
 await expect(signupPage.accountCreatedMsg).toBeVisible()
@@ -24,7 +26,7 @@ await expect(signupPage.accountCreatedMsg).toBeVisible()
 await signupPage.continueButton()
 
 //Verifying the user is loggedin
-await expect(signupPage.loginuserlink).toBeVisible()
+await expect(await signupPage.getLoggedInUserLink(users.newUserForSignup.firstName)).toBeVisible()
 
 //Click on Delete Account 
 await signupPage.deleteAccount()
