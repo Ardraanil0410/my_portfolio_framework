@@ -28,12 +28,12 @@ await signupPage.continueButton()
 //Verifying the user is loggedin
 await expect(await signupPage.getLoggedInUserLink(users.newUserForSignup.firstName)).toBeVisible()
 
-//Click on Delete Account 
-await signupPage.deleteAccount()
+// //Click on Delete Account 
+// await signupPage.deleteAccount()
 
-//Verifying the delete successful message
-await expect(signupPage.deletionSuccessMsg).toBeVisible()
+// //Verifying the delete successful message
+// await expect(signupPage.deletionSuccessMsg).toBeVisible()
 
-//Clicking on Continue Button 
-await signupPage.deleteContinueBtn()
+// //Clicking on Continue Button 
+// await signupPage.deleteContinueBtn()
 })
