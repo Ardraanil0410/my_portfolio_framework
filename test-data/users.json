@@ -1,0 +1,36 @@
+{
+    "validUser":{
+        "name":"Testuser777",
+        "email":"testuser777@test.com",
+        "password":"Testuser12345"
+    },
+    "invalidUser":{
+        "name":"Invaliduser",
+        "email":"invaliduser@test.com",
+        "password":"Invalid"
+    },
+
+  "newUserForSignup": {
+    "password": "Testuser12345",
+    "firstName": "Testuser777",
+    "lastName": "Usertest",
+    "address": "Larry Uteck Blvd",
+    "country": "Canada",
+    "state": "NS",
+    "city": "Bedford",
+    "zipcode": "B3M 0T6",
+    "mobile": "678543567",
+    "day": "10",
+"month": "10",
+"year": "1989"
+  },
+
+  "freshUser":{
+    "name":"Testuser2026",
+    "email":"Testuser2026@testuser.com",
+    "password":"Testuser2026"
+  }
+  
+}
+
+
