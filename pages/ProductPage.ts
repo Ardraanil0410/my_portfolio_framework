@@ -31,13 +31,19 @@ async searchProduct(productName:string){
 }
 
 async viewProduct(){
-   await this.viewProductButton.click()
+   await this.viewProductButton.first().click()
 }
 
 async specific(){
     await this.specificProduct.hover();
 await this.productAddCart.click();
+console.log("Product added successfully");
 
+}
+
+async productDetails(){
+    console.log(await this.productInfo.allInnerTexts());
+    
 }
 
 

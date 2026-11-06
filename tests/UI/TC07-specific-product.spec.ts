@@ -17,7 +17,7 @@ test("This is to search for a specific product",async({page})=>{
 
     await productPage.specific()
 
-    console.log("Product added successfully");
+    
     
 
 
