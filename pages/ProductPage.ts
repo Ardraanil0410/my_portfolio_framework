@@ -10,19 +10,21 @@ export class ProductPage{
     readonly productInfo:Locator
     readonly specificProduct:Locator
     readonly productAddCart:Locator
-    readonly oneProduct:Locator
+    readonly searchResults:Locator
+    readonly searchProductHeading:Locator
 
 constructor(page:Page){
     this.page=page
     this.searchBox=page.locator("#search_product")
     this.searchMagnifier=page.locator("#submit_search")
     this.productList=page.locator(".features_items")
-    this.oneProduct = page.locator(".product-image-wrapper");
-    this.specificProduct= this.oneProduct.filter({hasText:"Blue Top"})
+    this.searchResults = page.locator(".product-image-wrapper");
+    this.specificProduct= this.searchResults.filter({hasText:"Blue Top"})
     this.viewProductButton=page.getByRole("link",{name:"View Product"}).first()
     this.productInfo=page.locator(".product-information")
     this.allProductTitle=page.getByText("All Products")
     this.productAddCart=this.specificProduct.locator(".add-to-cart").first()
+    this.searchProductHeading=page.getByRole("heading",{name:"Searched Products"})
 }
 async searchProduct(productName:string){
     await this.searchBox.fill(productName)
