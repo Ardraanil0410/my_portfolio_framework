@@ -18,12 +18,12 @@ constructor(page:Page){
     this.searchBox=page.locator("#search_product")
     this.searchMagnifier=page.locator("#submit_search")
     this.productList=page.locator(".features_items")
-    this.searchResults = page.locator(".product-image-wrapper");
-    this.specificProduct= this.searchResults.filter({hasText:"Blue Top"})
+    this.searchResults = this.productList.locator(".product-image-wrapper");
+    // this.specificProduct= this.searchResults.filter({hasText:productName})
     this.viewProductButton=page.getByRole("link",{name:"View Product"}).first()
     this.productInfo=page.locator(".product-information")
     this.allProductTitle=page.getByText("All Products")
-    this.productAddCart=this.specificProduct.locator(".add-to-cart").first()
+    //this.productAddCart=this.specificProduct.locator(".add-to-cart").first()
     this.searchProductHeading=page.getByRole("heading",{name:"Searched Products"})
 }
 async searchProduct(productName:string){
@@ -36,9 +36,12 @@ async viewProduct(){
    await this.viewProductButton.first().click()
 }
 
-async specific(){
-    await this.specificProduct.hover();
-await this.productAddCart.click();
+async addProductToCart(productName:string){
+const specificProduct=this.searchResults.filter({hasText:productName})
+const productAddToCart=specificProduct.locator(".add-to-cart").first()
+await specificProduct.hover()
+await productAddToCart.click()
+
 console.log("Product added successfully");
 
 }
