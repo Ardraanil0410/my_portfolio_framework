@@ -1,20 +1,12 @@
-import {test,expect} from "@playwright/test"
-import { HomePage } from "../../pages/HomePage"
-import { LoginPage } from "../../pages/LoginPage"
 import users from "../../test-data/users.json"
-import { SignupDetailsPage } from "../../pages/SignupDetailsPage"
+import {test,expect} from "../../fixtures/baseTest"
 
-
-test("Test Case 4: Logout User",async({page})=>{
+test("Test Case 4: Logout User",async({page,homePage,loginPage,signupPage})=>{
     await page.goto("/")
-    const homePage= new HomePage(page)
+
     await homePage.clickSignupLogin()
-
-    const loginPage=new LoginPage(page)
     await loginPage.loginDetails(users.freshUser.email,users.freshUser.password)
-
-    const loggedinCheck=new SignupDetailsPage(page)
-    await expect(await loggedinCheck.getLoggedInUserLink(users.freshUser.name)).toBeVisible()
+    await expect(await signupPage.getLoggedInUserLink(users.freshUser.name)).toBeVisible()
 
     await loginPage.logoutLink()
     await expect(page).toHaveTitle("Automation Exercise - Signup / Login")

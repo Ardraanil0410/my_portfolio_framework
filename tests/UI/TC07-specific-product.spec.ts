@@ -1,10 +1,7 @@
-import {test,expect} from "@playwright/test"
-import { HomePage } from "../../pages/HomePage"
-import { ProductPage } from "../../pages/ProductPage"
+import {test,expect} from "../../fixtures/baseTest"
 
-test("This is to search for a specific product",async({page})=>{
-    const productPage=new ProductPage(page)
-    const homePage=new HomePage(page)
+test("This is to search for a specific product",async({page,homePage,productPage})=>{
+
     //Naviagte to the url
     await page.goto("https://www.automationexercise.com/")
     //To click the product link
@@ -15,7 +12,7 @@ test("This is to search for a specific product",async({page})=>{
 
     // await expect(productPage.specificProduct).toHaveText("Blue Top")
 
-    await productPage.specific()
+    await productPage.searchProduct("Blue Top")
 
     
     

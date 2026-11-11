@@ -1,10 +1,7 @@
-import {test,expect} from "@playwright/test"
-import { ProductPage } from "../../pages/ProductPage"
-import {HomePage} from "../../pages/HomePage"
+import {test,expect} from "../../fixtures/baseTest"
 
-test("Test Case 8: Verify All Products and product detail page",async({page})=>{
-    const homePage=new HomePage(page)
-    const productPage=new ProductPage(page)
+test("Test Case 8: Verify All Products and product detail page",async({page,productPage,homePage})=>{
+
 
     await page.goto("/")
     await expect(page).toHaveTitle("Automation Exercise")

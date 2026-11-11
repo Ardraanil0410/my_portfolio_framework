@@ -1,11 +1,8 @@
-import {test,expect} from "@playwright/test"
-import {HomePage} from "../../pages/HomePage"
-import { ProductPage } from "../../pages/ProductPage"
+import {test,expect} from "../../fixtures/baseTest"
 
-test("Test Case 9: Search Product",async({page})=>{
+
+test("Test Case 9: Search Product",async({page,homePage,productPage})=>{
     await page.goto("/")
-    const homePage= new HomePage(page)
-    const productPage=new ProductPage(page)
 
     await expect(homePage.homePageText).toBeVisible()
 

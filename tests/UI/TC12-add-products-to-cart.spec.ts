@@ -1,16 +1,8 @@
-import {test,expect} from "@playwright/test"
-import {HomePage} from "../../pages/HomePage"
-import {ProductPage} from "../../pages/ProductPage"
-import { AddToCartModal } from "../../components/CartModal"
-import {ViewCart } from "../../pages/ViewCart"
+import {test,expect} from "../../fixtures/baseTest"
 
-test("Test Case 12: Add Products in Cart",async({page})=>{
+
+test("Test Case 12: Add Products in Cart",async({page,homePage,productPage,cartModal,viewCartPage})=>{
     await page.goto("/")
-    const homePage=new HomePage(page)
-    const productPage=new ProductPage(page)
-    const addCartModal=new AddToCartModal(page)
-    const viewCartPage=new ViewCart(page)
-
     await expect(homePage.homePageText).toBeVisible()
     await homePage.advertisementPrompt()
     await homePage.product()
@@ -18,13 +10,13 @@ test("Test Case 12: Add Products in Cart",async({page})=>{
 
     await productPage.addProductToCart("Blue Top")
 
-    await addCartModal.continueShopping()
+    await cartModal.continueShopping()
 
     await productPage.searchProduct("Men Tshirt")
 
     await productPage.addProductToCart("Men Tshirt")
 
-    await addCartModal.viewCart()
+    await cartModal.viewCart()
 
     await expect(viewCartPage.cartRows).toHaveCount(2)
 

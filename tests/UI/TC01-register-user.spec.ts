@@ -1,14 +1,9 @@
-import { LoginPage } from "../../pages/LoginPage";
-import { HomePage } from "../../pages/HomePage";
-import { SignupDetailsPage } from "../../pages/SignupDetailsPage";
-import {test,expect} from "@playwright/test"
+import {test,expect} from "../../fixtures/baseTest"
 import users from "../../test-data/users.json"
 
-test ("Test Case 1: Register User",async({page})=>{
+test ("Test Case 1: Register User",async({page,loginPage,homePage,signupPage})=>{
     await page.goto("/")
-    const homePage=new HomePage(page)
-    const loginPage= new LoginPage(page)
-    const signupPage=new SignupDetailsPage(page)
+
  //To navigate to Home Page
     await homePage.clickSignupLogin()
 
