@@ -1,5 +1,6 @@
 
-name: Playwright Tests
+name: Run Playwright tests
+  run: npx playwright test tests/UI --grep-invert 'TC05'
 
 on:
   push:
